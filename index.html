@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Flores amarillas para Génesis 🌼</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌼</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   FLORES AMARILLAS — 21 de septiembre
+   Para Génesis, con mucho cariño.
+   ===================================================== */
+
+:root{
+  --cream:      #FFFAEE;
+  --cream-deep: #FCEFCE;
+  --paper:      #FFFDF6;
+  --gold:       #E2A93C;
+  --gold-soft:  #F3CB6D;
+  --gold-deep:  #A9762A;
+  --sun:        #F6C445;
+  --sun-deep:   #D98E1C;
+  --leaf:       #9CB275;
+  --leaf-deep:  #66794A;
+  --ink:        #4A3B22;
+  --ink-soft:   #7C6C4A;
+  --glass:      rgba(255,253,246,0.62);
+  --glass-brd:  rgba(226,169,60,0.35);
+  --shadow:     rgba(169,118,42,0.20);
+
+  --f-hand: 'Caveat', cursive;
+  --f-body: 'Quicksand', 'Segoe UI', sans-serif;
+  --radio: 20px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: var(--f-body);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 8%, rgba(246,196,69,0.30) 0%, transparent 55%),
+    radial-gradient(circle at 88% 12%, rgba(243,203,109,0.26) 0%, transparent 55%),
+    linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+.emoji{ display: inline-block; }
+
+/* ============ FONDO ============ */
+#fondo-particulas{
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+#capa-petalos{
+  position: fixed; inset: 0;
+  z-index: 1; pointer-events: none; overflow: hidden;
+}
+.petalo{
+  position: absolute;
+  top: -5%;
+  width: 13px; height: 9px;
+  background: var(--sun);
+  border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
+  opacity: 0.85;
+  animation-name: caerPetalo;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+@keyframes caerPetalo{
+  0%   { transform: translate(0,0) rotate(0deg); }
+  100% { transform: translate(var(--deriva,40px), 115vh) rotate(var(--giro,240deg)); }
+}
+
+/* ============ PANTALLA INICIAL ============ */
+#inicio{
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8vh 6vw;
+  z-index: 2;
+}
+.inicio-contenido{ max-width: 540px; }
+.inicio-chip{
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(246,196,69,0.22);
+  border: 1px solid rgba(217,142,28,0.35);
+  color: var(--gold-deep);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 1rem;
+}
+.inicio-titulo{
+  font-family: var(--f-hand);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 9vw, 4.2rem);
+  line-height: 1.05;
+  margin: 0 0 0.8rem;
+  text-shadow: 0 2px 16px var(--shadow);
+}
+.inicio-sub{
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  color: var(--ink-soft);
+  margin: 0 0 2.2rem;
+}
+
+/* ============ BOTONES ============ */
+.btn{
+  position: relative;
+  border: none;
+  cursor: pointer;
+  font-family: var(--f-body);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 2.3vw, 1.05rem);
+  color: var(--paper);
+  padding: 0.95rem 2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--sun-deep));
+  box-shadow: 0 10px 24px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.4);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.btn:active{ transform: translateY(0) scale(0.97); }
+.btn:focus-visible{ outline: 3px solid var(--gold-deep); outline-offset: 3px; }
+.btn::before{
+  content: "";
+  position: absolute; top: 0; left: -120%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  animation: brilloBtn 3.4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes brilloBtn{
+  0%{ left: -60%; }
+  55%, 100%{ left: 130%; }
+}
+.btn--sm{ padding: 0.75rem 1.6rem; font-size: 0.95rem; }
+
+/* ============ VELO DE TRANSICIÓN ============ */
+#velo{
+  position: fixed; inset: 0;
+  z-index: 50;
+  display: flex; align-items: flex-end; justify-content: center;
+  background: radial-gradient(circle at 50% 60%, rgba(74,59,34,0.10), rgba(74,59,34,0.70));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+#velo.activo{ opacity: 1; pointer-events: all; }
+
+.flor-grande{
+  width: min(70vw, 300px);
+  transform: translateY(40%) scale(0.6);
+  opacity: 0;
+  transition: transform 1.6s cubic-bezier(.2,.8,.2,1), opacity 1s ease;
+}
+#velo.crecer .flor-grande{ transform: translateY(0) scale(1); opacity: 1; }
+
+.flor-grande__tallo{
+  stroke: var(--leaf-deep);
+  stroke-width: 5;
+  fill: none;
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+}
+#velo.crecer .flor-grande__tallo{ animation: dibujarTallo 1.1s ease-out 0.1s forwards; }
+@keyframes dibujarTallo{ to{ stroke-dashoffset: 0; } }
+
+.flor-grande__hoja{ fill: var(--leaf); opacity: 0; transition: opacity 0.6s ease 0.15s; }
+#velo.crecer .flor-grande__hoja{ opacity: 0.9; }
+
+.flor-grande__centro{ fill: var(--sun-deep); }
+.flor-grande__cabeza{
+  transform-origin: 100px 100px;
+  transform: scale(0.15);
+  transition: transform 1.4s cubic-bezier(.34,1.56,.64,1) 0.5s;
+}
+#velo.crecer .flor-grande__cabeza{ transform: scale(1); }
+
+.flor-grande__petalo{ fill: var(--sun); }
+.flor-grande__petalos{
+  transform-origin: 100px 100px;
+  transform: scale(0.15) rotate(-25deg);
+  opacity: 0;
+}
+#velo.crecer .flor-grande__petalos{
+  animation: abrirPetalos 1.3s cubic-bezier(.34,1.56,.64,1) 0.85s forwards;
+}
+@keyframes abrirPetalos{
+  0%   { transform: scale(0.15) rotate(-25deg); opacity: 0; }
+  60%  { transform: scale(1.10) rotate(6deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ============ SECCIONES ============ */
+main{ position: relative; z-index: 2; }
+.seccion{
+  position: relative;
+  padding: 10vh 6vw;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.revelar{
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.revelar.visible{ opacity: 1; transform: translateY(0); }
+
+.titulo-seccion{
+  font-family: var(--f-hand);
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+.subtitulo-seccion{ color: var(--ink-soft); margin: 0 0 2rem; }
+
+.pista-scroll{
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  animation: flotar 2.5s ease-in-out infinite;
+}
+.flecha{ font-size: 1.4rem; color: var(--sun-deep); margin-top: 4px; }
+@keyframes flotar{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(8px); } }
+
+/* ============ TARJETA CRISTAL ============ */
+.tarjeta-cristal{
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--glass-brd);
+  border-radius: var(--radio);
+  padding: clamp(1.6rem, 5vw, 2.6rem);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 46px var(--shadow);
+  text-align: left;
+  overflow: hidden;
+}
+.tarjeta-cristal::before{
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(255,244,180,0.5) 0%, transparent 42%);
+  pointer-events: none;
+  animation: brillo 13s ease-in-out infinite alternate;
+}
+@keyframes brillo{
+  0%{ transform: translate(0,0); }
+  100%{ transform: translate(8%,8%); }
+}
+.tarjeta-cristal > *{ position: relative; z-index: 1; }
+.tarjeta-cristal p{
+  font-size: clamp(1rem, 2.3vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+.tarjeta-cristal p:last-child{ margin-bottom: 0; }
+.tarjeta-cristal .frase-final{
+  color: var(--gold-deep);
+  font-weight: 600;
+}
+
+/* ============ JARDÍN ============ */
+.jardin-contenedor{
+  position: relative;
+  height: 320px;
+  margin: 0 auto;
+  max-width: 640px;
+}
+.jardin-contenedor--sm{ height: 200px; margin-top: 1.4rem; }
+
+.flor-jardin{
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+  transform-origin: bottom center;
+  transform: scaleY(0);
+  transition: transform 0.9s cubic-bezier(.3,1.4,.4,1);
+  touch-action: manipulation;
+}
+.flor-jardin.crecida{ transform: scaleY(1); }
+.flor-jardin svg{ display: block; overflow: visible; }
+.flor-jardin.balanceo svg{ animation: balancear 4.5s ease-in-out infinite; }
+@keyframes balancear{
+  0%, 100%{ transform: rotate(-2.5deg); }
+  50%{ transform: rotate(2.5deg); }
+}
+.flor-jardin.tocada svg{ animation: sacudir 0.5s ease; }
+@keyframes sacudir{
+  0%, 100%{ transform: rotate(0deg) scale(1); }
+  30%{ transform: rotate(-8deg) scale(1.05); }
+  60%{ transform: rotate(6deg) scale(1.05); }
+}
+
+.mensaje-flor{
+  display: inline-block;
+  min-height: 1.2rem;
+  max-width: 92%;
+  margin: 1rem auto 0;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--cream-deep), var(--gold-soft) 140%);
+  border: 1px solid var(--glass-brd);
+  box-shadow: 0 10px 22px var(--shadow);
+  font-family: var(--f-hand);
+  font-size: 1.3rem;
+  color: var(--gold-deep);
+  opacity: 0;
+  transform: translateY(8px) scale(0.94);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1);
+}
+.mensaje-flor.activo{ opacity: 1; transform: translateY(0) scale(1); }
+
+.particula-petalo{
+  position: absolute;
+  width: 8px; height: 6px;
+  background: var(--sun);
+  border-radius: 60% 40%;
+  pointer-events: none;
+  animation: estallar 0.9s ease-out forwards;
+}
+@keyframes estallar{
+  to{ transform: translate(var(--dx), var(--dy)) rotate(var(--giro)); opacity: 0; }
+}
+
+/* ============ GALERÍA DE FOTOS ============ */
+.galeria{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 3vw, 1.8rem);
+  margin-top: 0.5rem;
+}
+
+.polaroid{
+  position: relative;
+  background: var(--paper);
+  padding: 12px 12px 46px;
+  border-radius: 6px;
+  box-shadow: 0 16px 34px var(--shadow);
+  width: min(70vw, 230px);
+  margin: 0;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease;
+  cursor: pointer;
+}
+.polaroid:nth-child(4n+1){ transform: rotate(-3deg); }
+.polaroid:nth-child(4n+2){ transform: rotate(2.5deg); }
+.polaroid:nth-child(4n+3){ transform: rotate(-1.5deg); }
+.polaroid:nth-child(4n+4){ transform: rotate(3.5deg); }
+
+.polaroid:hover,
+.polaroid:focus-visible{
+  transform: rotate(0deg) translateY(-8px) scale(1.04);
+  box-shadow: 0 24px 46px var(--shadow);
+  outline: none;
+  z-index: 3;
+}
+
+.polaroid__marco{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--cream-deep), var(--gold-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid__marco img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.polaroid:hover .polaroid__marco img{ transform: scale(1.06); }
+
+/* Estado sin foto */
+.polaroid__marco.sin-foto img{ display: none; }
+.polaroid__marco.sin-foto::before{
+  content: "🌼";
+  font-size: 2.6rem;
+  filter: drop-shadow(0 3px 6px rgba(169,118,42,0.35));
+}
+.polaroid__marco.sin-foto::after{
+  content: "Foto pendiente";
+  position: absolute;
+  bottom: 10px;
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  color: var(--gold-deep);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.polaroid figcaption{
+  position: absolute;
+  bottom: 10px;
+  left: 9px;
+  right: 9px;
+  font-family: var(--f-hand);
+  font-size: 1.0rem;
+  line-height: 1.02;
+  color: var(--ink-soft);
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-height: 2.8em;
+  overflow: hidden;
+}
+
+/* ============ CARTA ============ */
+.sobre{
+  width: min(88vw, 320px);
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sobre__cuerpo{
+  background: linear-gradient(160deg, var(--gold-soft), var(--gold));
+  height: 170px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1.1rem;
+  box-shadow: 0 16px 34px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.sobre__cuerpo::before, .sobre__cuerpo::after{
+  content: "";
+  position: absolute; top: 0;
+  width: 50%; height: 100%;
+  background: rgba(255,255,255,0.12);
+}
+.sobre__cuerpo::before{ left: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.sobre__cuerpo::after{ right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+
+.sobre__solapa{
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 95px;
+  background: var(--gold-deep);
+  clip-path: polygon(0 0, 100% 0, 50% 85%);
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(.4,.2,.2,1);
+  z-index: 3;
+}
+.sobre.abierto .sobre__solapa{ transform: rotateX(180deg); }
+
+.sobre__texto{
+  color: var(--paper);
+  font-family: var(--f-hand);
+  font-size: 1.25rem;
+  margin: 0;
+  z-index: 1;
+}
+.sobre__sello{
+  position: absolute;
+  top: 45%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.7rem;
+  z-index: 4;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+}
+
+.velo-carta{
+  position: fixed; inset: 0;
+  z-index: 90;
+  background: rgba(74,59,34,0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.velo-carta.visible{ opacity: 1; pointer-events: all; }
+
+.carta-papel{
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-46%) scale(0.92);
+  width: min(90vw, 540px);
+  max-height: 82vh;
+  margin: 0;
+  background: var(--paper);
+  border-radius: var(--radio);
+  padding: clamp(1.6rem, 5vw, 2.4rem);
+  box-shadow: 0 30px 70px rgba(40,30,10,0.35);
+  overflow-y: auto;
+  opacity: 0;
+  z-index: 91;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.8,.2,1);
+}
+.carta-papel.visible{
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+  pointer-events: all;
+}
+.cerrar-carta{
+  position: absolute;
+  top: 10px; right: 12px;
+  width: 32px; height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--cream-deep);
+  color: var(--ink-soft);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+.cerrar-carta:hover{ background: var(--gold-soft); color: var(--paper); }
+
+.carta-texto{
+  font-family: var(--f-hand);
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  line-height: 1.75;
+  color: var(--ink);
+  white-space: pre-line;
+  text-align: left;
+  margin: 0;
+}
+.carta-texto .cursor{
+  display: inline-block;
+  width: 2px;
+  background: var(--gold-deep);
+  animation: parpadeo 0.9s steps(1) infinite;
+}
+@keyframes parpadeo{ 50%{ opacity: 0; } }
+
+/* ============ LIGHTBOX ============ */
+.lightbox{
+  position: fixed; inset: 0;
+  z-index: 95;
+  background: rgba(40,30,10,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vw;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.lightbox.visible{ opacity: 1; pointer-events: all; }
+
+.lightbox img{
+  max-width: 92vw;
+  max-height: 82vh;
+  border-radius: 8px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  transform: scale(0.92);
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.lightbox.visible img{ transform: scale(1); }
+
+.lightbox__cerrar{
+  position: absolute;
+  top: 18px; right: 20px;
+  width: 42px; height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,253,246,0.9);
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+/* ============ MOMENTO ============ */
+.frase-momento{
+  font-family: var(--f-hand);
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  color: var(--ink-soft);
+  margin: 0.3rem 0;
+}
+.frase-momento--fuerte{ color: var(--gold-deep); font-weight: 600; }
+
+/* ============ TARJETA DORADA ============ */
+.tarjeta-dorada{
+  position: relative;
+  border: 2px solid rgba(217,142,28,0.4);
+  border-radius: var(--radio);
+  padding: clamp(1.6rem, 5vw, 2.4rem) clamp(1rem, 4vw, 2rem);
+  background: linear-gradient(160deg, rgba(255,253,246,0.75), rgba(246,196,69,0.16));
+  box-shadow: 0 18px 46px var(--shadow);
+}
+.contador-flores{
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin: 1rem 0 0.3rem;
+}
+.mensaje-florecer{
+  display: inline-block;
+  min-height: 1.2rem;
+  max-width: 92%;
+  margin: 0.5rem auto 0;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--cream-deep), var(--gold-soft) 140%);
+  border: 1px solid var(--glass-brd);
+  box-shadow: 0 10px 22px var(--shadow);
+  font-family: var(--f-hand);
+  font-size: 1.25rem;
+  color: var(--gold-deep);
+  opacity: 0;
+  transform: translateY(8px) scale(0.94);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1);
+}
+.mensaje-florecer.activo{ opacity: 1; transform: translateY(0) scale(1); }
+
+/* ============ FINAL ============ */
+#final{ max-width: 100%; }
+.jardin-final{
+  position: relative;
+  height: 200px;
+  max-width: 900px;
+  margin: 0 auto 1rem;
+}
+.final-texto{ max-width: 600px; margin: 0 auto; }
+.final-linea{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  margin: 0.5rem 0;
+}
+#final.visible .final-linea:nth-of-type(1){ transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+#final.visible .final-linea:nth-of-type(2){ transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+#final.visible .final-linea:nth-of-type(3){ transition-delay: 1.0s; opacity: 1; transform: translateY(0); }
+#final.visible .final-firma{ transition-delay: 1.4s; opacity: 1; transform: translateY(0); }
+.final-firma{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  font-family: var(--f-hand);
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-top: 1.4rem;
+}
+
+/* ============ REPRODUCTOR ============ */
+.reproductor{
+  position: fixed;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  right: 16px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-brd);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px var(--shadow);
+}
+.reproductor[hidden]{ display: none; }
+.reproductor__play{
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--gold-soft), var(--sun-deep));
+  color: var(--paper);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.reproductor__vol{ width: 65px; accent-color: var(--gold-deep); }
+
+/* ============ SVG HELPERS ============ */
+.svg-tallo{ stroke: var(--leaf-deep); stroke-width: 3; fill: none; }
+.svg-hoja{ fill: var(--leaf); }
+.svg-centro{ fill: var(--sun-deep); }
+.svg-petalo-amarillo{ fill: var(--sun); }
+.svg-petalo-dorado{ fill: var(--gold-soft); }
+
+/* ============ RESPONSIVE ============ */
+@media (min-width: 640px){
+  .seccion{ padding: 12vh 8vw; }
+}
+@media (min-width: 900px){
+  .seccion{ max-width: 780px; }
+  .jardin-contenedor{ max-width: 740px; height: 360px; }
+}
+@media (max-width: 380px){
+  .inicio-titulo{ font-size: 2.2rem; }
+  .polaroid{ width: 78vw; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="fondo-particulas"></canvas>
+<div id="capa-petalos"></div>
+
+<!-- ============ PANTALLA INICIAL ============ -->
+<section id="inicio">
+  <div class="inicio-contenido">
+    <p class="inicio-chip">21 de septiembre</p>
+    <h1 class="inicio-titulo">Flores amarillas<br>para Génesis <span class="emoji">🌼</span></h1>
+    <p class="inicio-sub">Un detalle hecho con cariño, pensando en ti.</p>
+    <button id="btn-abrir" class="btn">
+      <span>ABRIR</span> <span class="emoji">🌼</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ VELO ============ -->
+<div id="velo" aria-hidden="true">
+  <div class="flor-grande">
+    <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+      <line class="flor-grande__tallo" x1="100" y1="260" x2="100" y2="120"/>
+      <path class="flor-grande__hoja" d="M100 200 C 60 190, 40 165, 55 140 C 80 150, 100 170, 100 200 Z"/>
+      <path class="flor-grande__hoja" d="M100 215 C 140 205, 160 180, 145 155 C 120 165, 100 185, 100 215 Z"/>
+      <g class="flor-grande__cabeza">
+        <g class="flor-grande__petalos">
+          <ellipse class="flor-grande__petalo" cx="100" cy="68" rx="15" ry="32" transform="rotate(0 100 100)"/>
+          <ellipse cx="100" cy="68" rx="15" ry="32" transform="rotate(45 100 100)"  fill="#F3CB6D"/>
+          <ellipse class="flor-grande__petalo" cx="100" cy="68" rx="15" ry="32" transform="rotate(90 100 100)"/>
+          <ellipse cx="100" cy="68" rx="15" ry="32" transform="rotate(135 100 100)" fill="#F3CB6D"/>
+          <ellipse class="flor-grande__petalo" cx="100" cy="68" rx="15" ry="32" transform="rotate(180 100 100)"/>
+          <ellipse cx="100" cy="68" rx="15" ry="32" transform="rotate(225 100 100)" fill="#F3CB6D"/>
+          <ellipse class="flor-grande__petalo" cx="100" cy="68" rx="15" ry="32" transform="rotate(270 100 100)"/>
+          <ellipse cx="100" cy="68" rx="15" ry="32" transform="rotate(315 100 100)" fill="#F3CB6D"/>
+        </g>
+        <circle class="flor-grande__centro" cx="100" cy="100" r="18"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ CONTENIDO ============ -->
+<main>
+
+  <!-- MENSAJE PRINCIPAL -->
+  <section id="mensaje" class="seccion revelar">
+    <div class="tarjeta-cristal">
+      <h2 class="titulo-seccion">Hola, Génesis 🌼</h2>
+      <p>Como el 21 de septiembre se regalan flores amarillas, y quería que tuvieras las tuyas, te dejo estas por acá.</p>
+      <p>No son flores de verdad, pero están hechas con el mismo cariño con el que pensaría en darte unas. Me alegra mucho tenerte en mi vida.</p>
+      <p>Gracias por ser esa persona tan linda que eres. Y por hacer mis días un poquito mejores sin darte cuenta.</p>
+      <p class="frase-final">Te aprecio mucho, Génesis. 💛</p>
+    </div>
+    <div class="pista-scroll" aria-hidden="true">
+      <span>Un poco más abajo</span>
+      <div class="flecha">↓</div>
+    </div>
+  </section>
+
+  <!-- JARDÍN -->
+  <section id="jardin" class="seccion revelar">
+    <h2 class="titulo-seccion">Un jardincito para ti</h2>
+    <p class="subtitulo-seccion">Toca las flores si te da curiosidad.</p>
+    <div id="jardin-contenedor" class="jardin-contenedor"></div>
+    <div id="jardin-mensaje" class="mensaje-flor" aria-live="polite"></div>
+  </section>
+
+  <!-- ============ FOTOS ============ -->
+  <section id="fotos" class="seccion revelar">
+    <h2 class="titulo-seccion">Un par de recuerdos</h2>
+    <p class="subtitulo-seccion">Por si algún día quieres recordar. Tócalas para verlas más grandes.</p>
+
+    <div class="galeria">
+      <figure class="polaroid" tabindex="0" role="button" aria-label="Ver foto 1">
+        <div class="polaroid__marco">
+          <img src="fotos/foto1.jpg" alt="Recuerdo 1" loading="lazy"
+               onerror="this.parentElement.classList.add('sin-foto'); this.removeAttribute('src');">
+        </div>
+        <figcaption>🌼 Mi persona favorita</figcaption>
+      </figure>
+
+      <figure class="polaroid" tabindex="0" role="button" aria-label="Ver foto 2">
+        <div class="polaroid__marco">
+          <img src="fotos/foto2.jpg" alt="Recuerdo 2" loading="lazy"
+               onerror="this.parentElement.classList.add('sin-foto'); this.removeAttribute('src');">
+        </div>
+        <figcaption>esa sonrisa tan linda 😊</figcaption>
+      </figure>
+
+      <figure class="polaroid" tabindex="0" role="button" aria-label="Ver foto 3">
+        <div class="polaroid__marco">
+          <img src="fotos/foto3.jpg" alt="Recuerdo 3" loading="lazy"
+               onerror="this.parentElement.classList.add('sin-foto'); this.removeAttribute('src');">
+        </div>
+        <figcaption>#UGB_VERDE/GÉNESIS 💛</figcaption>
+      </figure>
+
+      <figure class="polaroid" tabindex="0" role="button" aria-label="Ver foto 4">
+        <div class="polaroid__marco">
+          <img src="fotos/foto4.jpg" alt="Recuerdo 4" loading="lazy"
+               onerror="this.parentElement.classList.add('sin-foto'); this.removeAttribute('src');">
+        </div>
+        <figcaption>Como olvidar cuando te enlistaste en el ejercito</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta" class="seccion revelar">
+    <h2 class="titulo-seccion">Una notita para ti</h2>
+    <p class="subtitulo-seccion">Ábrela cuando quieras, Génesis.</p>
+    <div id="sobre" class="sobre" tabindex="0" role="button" aria-label="Abrir nota">
+      <div class="sobre__solapa"></div>
+      <div class="sobre__cuerpo">
+        <p class="sobre__texto">Ábreme 🌼</p>
+      </div>
+      <div class="sobre__sello">💛</div>
+    </div>
+  </section>
+
+  <!-- MOMENTO -->
+  <section id="momento" class="seccion revelar">
+    <p class="frase-momento">Hay personas que llegan y se vuelven importantes.</p>
+    <p class="frase-momento frase-momento--fuerte">Y tú eres una de ellas, Génesis.</p>
+  </section>
+
+  <!-- BOTÓN FLORECER -->
+  <section id="florecer" class="seccion revelar">
+    <div class="tarjeta-dorada">
+      <h2 class="titulo-seccion">Planta una más</h2>
+      <p class="subtitulo-seccion">Si te quedaste con ganas.</p>
+      <button id="btn-florecer" class="btn btn--sm">
+        <span>Haz crecer una flor</span> <span class="emoji">🌼</span>
+      </button>
+      <p id="contador-flores" class="contador-flores">Flores: 0</p>
+      <p id="mensaje-florecer" class="mensaje-florecer" aria-live="polite"></p>
+      <div id="florecer-contenedor" class="jardin-contenedor jardin-contenedor--sm"></div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section id="final" class="seccion revelar">
+    <div id="jardin-final" class="jardin-final" aria-hidden="true"></div>
+    <div class="final-texto">
+      <h2 class="titulo-seccion">Feliz 21 de septiembre, Génesis 🌼</h2>
+      <p class="final-linea">Cuídate mucho.</p>
+      <p class="final-linea">Gracias por ser tan linda conmigo.</p>
+      <p class="final-linea">Te quiere,</p>
+      <p class="final-firma">Alguien que te aprecia de verdad. 💛</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- CARTA MODAL -->
+<div id="velo-carta" class="velo-carta" aria-hidden="true"></div>
+<div id="carta-papel" class="carta-papel" role="dialog" aria-modal="true" aria-label="Nota">
+  <button id="cerrar-carta" class="cerrar-carta" aria-label="Cerrar">×</button>
+  <p id="carta-texto" class="carta-texto"></p>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+  <button id="cerrar-lightbox" class="lightbox__cerrar" aria-label="Cerrar">×</button>
+  <img id="lightbox-img" alt="">
+</div>
+
+<!-- MÚSICA -->
+<div id="reproductor" class="reproductor" hidden>
+  <button id="btn-musica" class="reproductor__play" aria-label="Música">♫</button>
+  <input id="volumen" class="reproductor__vol" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volumen">
+  <audio id="audio" src="music.mp3" loop preload="none"></audio>
+</div>
+
+<script>
+/* =====================================================
+   LÓGICA — para Génesis, con mucho cariño.
+   ===================================================== */
+const NS = "http://www.w3.org/2000/svg";
+
+/* ---------- Frases ---------- */
+const FRASES_JARDIN = [
+  "Una florecita para ti 🌼",
+  "Esta va por el 21.",
+  "Un detalle con cariño.",
+  "Para que sonrías un rato.",
+  "Una más, y ya.",
+  "Hecha solo para ti. 🌼",
+  "Eres una persona muy linda.",
+  "Gracias por estar."
+];
+
+const FRASES_FLORECER = [
+  "Otra más 💛",
+  "Creciendo por acá.",
+  "Ya casi tengo un jardín.",
+  "Esta también es tuya.",
+  "Un poquito más de amarillo.",
+  "Con cariño para ti."
+];
+
+const TEXTO_CARTA =
+`Hola, Génesis:
+
+Como el 21 de septiembre se regalan flores amarillas, y quería que tuvieras las tuyas, te dejo estas por acá.
+
+No son flores de verdad, pero están hechas con el mismo cariño con el que pensaría en darte unas. Me alegra mucho tenerte en mi vida.
+
+Sé que últimamente la U te tiene con la cabeza llena y el corazón cansado. Y aunque no siempre te lo diga, me doy cuenta. Quiero que sepas que no estás sola en esto, que admiro la fuerza con la que sigues adelante incluso cuando las cosas se ponen difíciles.
+
+Tienes un potencial enorme, mi niña. Más del que tú misma te reconoces. A veces no vemos lo que otros sí vemos en nosotros, y yo veo en ti a alguien capaz, inteligente y luchadora. Esto es solo una etapa, no el final de nada.
+
+Confía en ti como yo confío en ti. Descansa cuando lo necesites, no te exijas de más, y recuerda que un mal día no define quién eres. Vas a salir de esta, y cuando lo hagas, vas a mirar atrás y te va a dar orgullo todo lo que aguantaste.
+
+Gracias por ser esa persona tan linda que eres. Y por hacer mis días un poquito mejores sin darte cuenta.
+
+Te aprecio mucho. Cuídate.
+
+— Alguien que cree en ti y te aprecia de verdad. 💛`;
+
+/* ---------- Utilidades ---------- */
+const rand = (a,b)=>a+Math.random()*(b-a);
+
+let colaJardin = [];
+function fraseJardin(){
+  if (!colaJardin.length){
+    colaJardin = [...FRASES_JARDIN].sort(()=>Math.random()-0.5);
+  }
+  return colaJardin.pop();
+}
+
+function tipoFlor(){
+  const r = Math.random();
+  if (r < 0.35) return 'girasol';
+  if (r < 0.65) return 'margarita';
+  if (r < 0.85) return 'silvestre';
+  return 'pequena';
+}
+
+/* ---------- Generador SVG de flores ---------- */
+function crearFlor(tipo){
+  const g = document.createElementNS(NS,'g');
+  g.setAttribute('class','svg-flor');
+
+  const tallo = document.createElementNS(NS,'path');
+  tallo.setAttribute('class','svg-tallo');
+  tallo.setAttribute('d','M30 92 C 28 74, 32 52, 30 34');
+  g.appendChild(tallo);
+
+  const hoja1 = document.createElementNS(NS,'path');
+  hoja1.setAttribute('class','svg-hoja');
+  hoja1.setAttribute('d','M30 66 C 14 62, 8 50, 16 42 C 26 46, 32 56, 30 66 Z');
+  g.appendChild(hoja1);
+
+  if (Math.random() > 0.4){
+    const hoja2 = document.createElementNS(NS,'path');
+    hoja2.setAttribute('class','svg-hoja');
+    hoja2.setAttribute('d','M30 74 C 46 70, 52 58, 44 50 C 34 54, 28 64, 30 74 Z');
+    g.appendChild(hoja2);
+  }
+
+  const cx = 30, cy = 30;
+  const cabeza = document.createElementNS(NS,'g');
+
+  function petalos(n, largo, ancho, clases){
+    for (let i=0; i<n; i++){
+      const ang = (360/n)*i + rand(-4,4);
+      const p = document.createElementNS(NS,'ellipse');
+      p.setAttribute('cx',cx);
+      p.setAttribute('cy',cy - largo/2);
+      p.setAttribute('rx',ancho/2);
+      p.setAttribute('ry',largo/2);
+      p.setAttribute('transform',`rotate(${ang} ${cx} ${cy})`);
+      p.setAttribute('class', Array.isArray(clases) ? clases[i%clases.length] : clases);
+      cabeza.appendChild(p);
+    }
+  }
+  function centro(r,clase){
+    const c = document.createElementNS(NS,'circle');
+    c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',r);
+    c.setAttribute('class',clase);
+    cabeza.appendChild(c);
+  }
+
+  switch(tipo){
+    case 'girasol':
+      petalos(14,20,7,['svg-petalo-amarillo','svg-petalo-dorado']);
+      centro(10,'svg-centro'); break;
+    case 'margarita':
+      petalos(10,15,5,'svg-petalo-dorado');
+      centro(6.5,'svg-centro'); break;
+    case 'silvestre':
+      petalos(6,10,5,'svg-petalo-amarillo');
+      centro(4,'svg-centro'); break;
+    default:
+      petalos(5,6,3,'svg-petalo-amarillo');
+      centro(2.6,'svg-centro');
+  }
+
+  g.appendChild(cabeza);
+  return g;
+}
+
+function florSVG(tipo){
+  const svg = document.createElementNS(NS,'svg');
+  svg.setAttribute('viewBox','0 0 60 92');
+  svg.appendChild(crearFlor(tipo));
+  return svg;
+}
+
+/* ---------- Fondo: partículas ---------- */
+const canvas = document.getElementById('fondo-particulas');
+const ctx = canvas.getContext('2d');
+let particulas = [];
+let t = 0;
+
+function ajustar(){
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+function crearParticulas(n){
+  particulas = Array.from({length:n}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: rand(1,2.4),
+    vy: rand(0.10,0.35),
+    vx: rand(-0.08,0.08),
+    a: rand(0.2,0.55),
+    f: Math.random()*Math.PI*2
+  }));
+}
+function animar(){
+  t += 0.02;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for (const p of particulas){
+    p.y -= p.vy;
+    p.x += p.vx + Math.sin(t+p.f)*0.1;
+    if (p.y < -10){ p.y = canvas.height+10; p.x = Math.random()*canvas.width; }
+    const parp = 0.5 + 0.5*Math.sin(t*2+p.f);
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(230,180,60,${(p.a*parp).toFixed(2)})`;
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  }
+  requestAnimationFrame(animar);
+}
+ajustar(); crearParticulas(innerWidth<640?22:38); animar();
+addEventListener('resize', ajustar);
+
+/* ---------- Pétalos ---------- */
+const capa = document.getElementById('capa-petalos');
+function petalo(opts={}){
+  const p = document.createElement('div');
+  p.className = 'petalo';
+  p.style.left = (opts.izq ?? Math.random()*100)+'%';
+  const tam = opts.tam ?? rand(9,17);
+  p.style.width = tam+'px';
+  p.style.height = (tam*0.72)+'px';
+  p.style.setProperty('--deriva', (opts.deriva ?? rand(-60,60)).toFixed(0)+'px');
+  p.style.setProperty('--giro', (opts.giro ?? rand(180,420)).toFixed(0)+'deg');
+  p.style.animationDuration = (opts.dur ?? rand(8,14)).toFixed(2)+'s';
+  p.style.animationDelay = (opts.ret ?? 0).toFixed(2)+'s';
+  capa.appendChild(p);
+  p.addEventListener('animationend', ()=>p.remove());
+}
+setInterval(()=>{ if (!document.hidden) petalo(); }, 1200);
+function lluviaFinal(){
+  for (let i=0;i<50;i++) petalo({ ret: rand(0,4), dur: rand(7,12) });
+}
+
+/* ---------- Estallido ---------- */
+function estallar(cont, xPct, yPct, n=5){
+  for (let i=0;i<n;i++){
+    const p = document.createElement('div');
+    p.className = 'particula-petalo';
+    p.style.left = xPct+'%';
+    p.style.top = yPct+'%';
+    p.style.setProperty('--dx', rand(-45,45).toFixed(0)+'px');
+    p.style.setProperty('--dy', rand(-55,-15).toFixed(0)+'px');
+    p.style.setProperty('--giro', rand(90,300).toFixed(0)+'deg');
+    cont.appendChild(p);
+    p.addEventListener('animationend', ()=>p.remove());
+  }
+}
+
+/* ---------- Jardín ---------- */
+function tocar(wrap, cont, msgEl){
+  wrap.classList.add('tocada');
+  wrap.addEventListener('animationend', ()=>wrap.classList.remove('tocada'), { once:true });
+
+  const rF = wrap.getBoundingClientRect();
+  const rC = cont.getBoundingClientRect();
+  const xPct = ((rF.left+rF.width/2 - rC.left)/rC.width)*100;
+  const yPct = ((rF.top - rC.top)/rC.height)*100;
+  estallar(cont, xPct, yPct, 5);
+
+  if (msgEl){
+    msgEl.textContent = fraseJardin();
+    msgEl.classList.remove('activo');
+    void msgEl.offsetWidth;
+    msgEl.classList.add('activo');
+  }
+}
+
+function agregarFlor(cont, { izq, interactiva=false, msgEl=null }={}){
+  const wrap = document.createElement('div');
+  wrap.className = 'flor-jardin';
+  const ancho = rand(34,62);
+  wrap.style.left = (izq ?? rand(4,94)).toFixed(1)+'%';
+  wrap.style.width = ancho.toFixed(0)+'px';
+  wrap.style.zIndex = Math.round(ancho);
+  wrap.appendChild(florSVG(tipoFlor()));
+  cont.appendChild(wrap);
+
+  setTimeout(()=>{
+    wrap.classList.add('crecida');
+    setTimeout(()=>{
+      wrap.classList.add('balanceo');
+      const svg = wrap.querySelector('svg');
+      if (svg) svg.style.animationDelay = `-${rand(0,4).toFixed(2)}s`;
+    }, 950);
+  }, 30);
+
+  if (interactiva){
+    const activar = (e)=>{ e.preventDefault(); tocar(wrap, cont, msgEl); };
+    wrap.addEventListener('click', activar);
+    wrap.tabIndex = 0;
+    wrap.setAttribute('role','button');
+    wrap.setAttribute('aria-label','Flor');
+    wrap.addEventListener('keydown',(e)=>{
+      if (e.key==='Enter'||e.key===' '){ activar(e); }
+    });
+  }
+  return wrap;
+}
+
+function crearJardin(cont, n, opts={}){
+  cont.innerHTML = '';
+  for (let i=0;i<n;i++){
+    const base = (i/Math.max(n-1,1))*92 + 4;
+    const jitter = rand(-3,3);
+    const izq = Math.min(97, Math.max(1, base+jitter));
+    setTimeout(()=>agregarFlor(cont,{
+      izq, interactiva: opts.interactiva, msgEl: opts.msgEl
+    }), i*70);
+  }
+}
+
+/* ---------- Carta ---------- */
+const sobre = document.getElementById('sobre');
+const veloC = document.getElementById('velo-carta');
+const papel = document.getElementById('carta-papel');
+const textoCarta = document.getElementById('carta-texto');
+const cerrar = document.getElementById('cerrar-carta');
+let abierta = false, escrita = false;
+
+function escribir(txt, el){
+  el.textContent = '';
+  const cur = document.createElement('span');
+  cur.className = 'cursor';
+  cur.textContent = '\u00A0';
+  el.appendChild(cur);
+  let i = 0;
+  const id = setInterval(()=>{
+    if (i < txt.length){
+      cur.insertAdjacentText('beforebegin', txt[i]);
+      i++;
+    } else {
+      clearInterval(id);
+      cur.remove();
+    }
+  }, 16);
+}
+
+function abrir(){
+  if (abierta) return;
+  abierta = true;
+  sobre.classList.add('abierto');
+  veloC.classList.add('visible');
+  setTimeout(()=>{
+    papel.classList.add('visible');
+    if (!escrita){ escrita = true; escribir(TEXTO_CARTA, textoCarta); }
+  }, 500);
+}
+function cerrarFn(){
+  if (!abierta) return;
+  abierta = false;
+  sobre.classList.remove('abierto');
+  veloC.classList.remove('visible');
+  papel.classList.remove('visible');
+}
+veloC.addEventListener('click', cerrarFn);
+cerrar.addEventListener('click', cerrarFn);
+document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && abierta) cerrarFn(); });
+sobre.addEventListener('click', abrir);
+sobre.addEventListener('keydown', (e)=>{
+  if (e.key==='Enter'||e.key===' '){ e.preventDefault(); abrir(); }
+});
+
+/* ---------- Lightbox de fotos ---------- */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const cerrarLb = document.getElementById('cerrar-lightbox');
+
+function abrirLightbox(src, alt){
+  if (!src) return;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('visible');
+  lightbox.setAttribute('aria-hidden','false');
+}
+function cerrarLightbox(){
+  lightbox.classList.remove('visible');
+  lightbox.setAttribute('aria-hidden','true');
+  setTimeout(()=>{ lightboxImg.src = ''; }, 350);
+}
+
+cerrarLb.addEventListener('click', cerrarLightbox);
+lightbox.addEventListener('click', (e)=>{ if (e.target === lightbox) cerrarLightbox(); });
+document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && lightbox.classList.contains('visible')) cerrarLightbox(); });
+
+document.querySelectorAll('.polaroid').forEach((pol)=>{
+  const img = pol.querySelector('img');
+  const abrirEsta = ()=>{
+    const marco = pol.querySelector('.polaroid__marco');
+    if (marco && marco.classList.contains('sin-foto')) return;
+    if (!img || !img.src) return;
+    abrirLightbox(img.src, img.alt);
+  };
+  pol.addEventListener('click', abrirEsta);
+  pol.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); abrirEsta(); }
+  });
+});
+
+/* ---------- Botón florecer ---------- */
+const btnF = document.getElementById('btn-florecer');
+const contF = document.getElementById('florecer-contenedor');
+const contador = document.getElementById('contador-flores');
+const msgF = document.getElementById('mensaje-florecer');
+let cuenta = 0;
+
+btnF.addEventListener('click', ()=>{
+  cuenta++;
+  agregarFlor(contF, { interactiva: true });
+  contador.textContent = `Flores: ${cuenta}`;
+
+  let m;
+  if (cuenta === 6) m = 'Ya tenemos unas cuantas...';
+  else if (cuenta === 7) m = 'Ok, suficiente por hoy 😄';
+  else m = FRASES_FLORECER[Math.floor(Math.random()*FRASES_FLORECER.length)];
+
+  msgF.textContent = m;
+  msgF.classList.remove('activo');
+  void msgF.offsetWidth;
+  msgF.classList.add('activo');
+});
+
+/* ---------- Reveal / secciones ---------- */
+const jCont = document.getElementById('jardin-contenedor');
+const jMsg = document.getElementById('jardin-mensaje');
+const jFinal = document.getElementById('jardin-final');
+let listoJ = false, listoF = false;
+
+const io = new IntersectionObserver((entradas)=>{
+  entradas.forEach((e)=>{
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+
+    if (e.target.id === 'jardin' && !listoJ){
+      listoJ = true;
+      crearJardin(jCont, 12, { interactiva: true, msgEl: jMsg });
+    }
+    if (e.target.id === 'final' && !listoF){
+      listoF = true;
+      crearJardin(jFinal, 14, { interactiva: false });
+      lluviaFinal();
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('.revelar').forEach(el=>io.observe(el));
+
+/* ---------- Música ---------- */
+const rep = document.getElementById('reproductor');
+const audio = document.getElementById('audio');
+const btnM = document.getElementById('btn-musica');
+const vol = document.getElementById('volumen');
+let sonando = false;
+
+audio.volume = parseFloat(vol.value);
+
+btnM.addEventListener('click', ()=>{
+  if (sonando){
+    audio.pause();
+    btnM.textContent = '♫';
+    sonando = false;
+  } else {
+    audio.play().then(()=>{
+      btnM.textContent = '❚❚';
+      sonando = true;
+    }).catch(()=>{ rep.hidden = true; });
+  }
+});
+vol.addEventListener('input', ()=>{ audio.volume = parseFloat(vol.value); });
+audio.addEventListener('error', ()=>{ rep.hidden = true; });
+
+/* ---------- Abrir ---------- */
+const btnAbrir = document.getElementById('btn-abrir');
+const velo = document.getElementById('velo');
+
+btnAbrir.addEventListener('click', ()=>{
+  btnAbrir.disabled = true;
+  velo.classList.add('activo');
+  for (let i=0;i<16;i++) petalo({ ret: rand(0,1.2) });
+  setTimeout(()=>velo.classList.add('crecer'), 300);
+  setTimeout(()=>{
+    velo.classList.remove('activo');
+    velo.classList.remove('crecer');
+    document.getElementById('mensaje').scrollIntoView({ behavior:'smooth' });
+    rep.hidden = false;
+  }, 2600);
+});
+</script>
+</body>
+</html>
